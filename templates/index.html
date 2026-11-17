@@ -1,0 +1,47 @@
+<body style="background:#000;color:#fff;font-family:sans-serif;margin:0">
+<div style="background:linear-gradient(180deg,#000,#2b0000);padding:20px;text-align:center">
+<h1 style="color:gold;font-size:34px;margin:0">WULI V JARKATA 🇰🇪</h1>
+<p>Kenya Music For ALL - All Genders, All Ages, All Counties</p>
+<p style="background:gold;color:#000;display:inline-block;padding:10px 18px;border-radius:20px;font-weight:bold">🔥 TRENDING IN KENYA NOW</p>
+</div>
+
+<div style="text-align:center;padding:10px">
+<a href="/signup" style="background:gold;color:#000;padding:16px 30px;display:inline-block;text-decoration:none;border-radius:30px;font-weight:bold;font-size:18px">🎤 SIGN UP FREE & UPLOAD</a><br><br>
+<a href="/login" style="color:gold">Login</a> | <a href="/vip" style="color:gold">⭐ VIP 100 KSh</a>
+</div>
+
+<h2 style="color:gold;text-align:center">🔥 Top Kenyan Artists Inspiring Us</h2>
+<p style="text-align:center;color:#ccc;font-size:13px">These stars are trending in Kenya — Your song could be NEXT on WULI V JARKATA</p>
+
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;padding:6px">
+<div style="background:#111;border-radius:10px;overflow:hidden;text-align:center"><img src="https://kelxfy.com/wp-content/uploads/2025/11/Toxic-Lyrikali-Glitter-Freestyle-Lyrics.jpg" style="width:100%;height:140px;object-fit:cover"><p style="margin:5px"><b>Toxic Lyrikali</b><br><span style="color:gold;font-size:12px">Hip Hop / Drill</span></p></div>
+<div style="background:#111;border-radius:10px;overflow:hidden;text-align:center"><img src="https://cdn.radioafrica.digital/image/2025/01/3c74ccbb-9f71-46fe-a644-02d167401eae.jpeg" style="width:100%;height:140px;object-fit:cover"><p style="margin:5px"><b>Kapitani</b><br><span style="color:gold;font-size:12px">Arbantone</span></p></div>
+<div style="background:#111;border-radius:10px;overflow:hidden;text-align:center"><img src="https://biggestkaka.co.ke/wp-content/uploads/2018/08/Khaligraph-Jones-showing-off-his-tats-rockng-a-mavin.jpg" style="width:100%;height:140px;object-fit:cover"><p style="margin:5px"><b>Khaligraph Jones</b><br><span style="color:gold;font-size:12px">Rap King</span></p></div>
+<div style="background:#111;border-radius:10px;overflow:hidden;text-align:center"><img src="https://image.okayafrica.com/229936.webp?imageId=229936&width=960&height=642&format=jpg" style="width:100%;height:140px;object-fit:cover"><p style="margin:5px"><b>Bien</b><br><span style="color:gold;font-size:12px">Afrobeats</span></p></div>
+<div style="background:#111;border-radius:10px;overflow:hidden;text-align:center"><img src="https://businesstoday.co.ke/wp-content/uploads/2021/02/nadia-mukami-34-1024x715.jpg" style="width:100%;height:140px;object-fit:cover"><p style="margin:5px"><b>Nadia Mukami</b><br><span style="color:gold;font-size:12px">Queen of Pop</span></p></div>
+<div style="background:#111;border-radius:10px;overflow:hidden;text-align:center"><img src="https://omgvoice.com/wp-content/uploads/2022/08/Mejja.jpg" style="width:100%;height:140px;object-fit:cover"><p style="margin:5px"><b>Mejja</b><br><span style="color:gold;font-size:12px">Gengetone / Genge</span></p></div>
+</div>
+
+<h2 style="color:gold;text-align:center">🎧 Trending Songs Covers In Kenya</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px">
+<div style="background:#111;padding:10px;border-radius:12px;border:1px solid gold;text-align:center"><img src="https://kelxfy.com/wp-content/uploads/2025/11/Toxic-Lyrikali-Glitter-Freestyle-Lyrics.jpg" style="width:100%;height:130px;object-fit:cover;border-radius:10px"><p><b>Glitter Freestyle</b><br>Toxic Lyrikali - 🔥 1.2M plays</p></div>
+<div style="background:#111;padding:10px;border-radius:12px;border:1px solid gold;text-align:center"><img src="https://k24.digital/wp-content/uploads/2026/09/Kapitani-safe-2.png" style="width:100%;height:130px;object-fit:cover;border-radius:10px"><p><b>Safe</b><br>Kapitani - 🔥 Trending Arbantone</p></div>
+</div>
+
+<div style="background:#111;margin:15px;padding:15px;border-radius:12px;border:1px solid gold">
+<h3 style="color:gold;text-align:center">Why Join WULI V JARKATA?</h3>
+<p>✅ FREE Upload - No studio needed<br>✅ Sign Up in 30 Seconds<br>✅ All Genders, All Ages, All 47 Counties<br>✅ Fans find you by Genre + County<br>✅ VIP 100 KSh - Top of Homepage + Verified Badge</p>
+<div style="text-align:center"><a href="/signup" style="background:gold;color:#000;padding:14px 25px;display:inline-block;border-radius:25px;text-decoration:none;font-weight:bold">JOIN NOW - BE NEXT STAR</a></div>
+</div>
+
+<h2 style="color:gold;text-align:center">🎤 Latest Uploads From New Artists</h2>
+<p style="text-align:center;color:#ccc">{% if not songs %}No new songs yet - Be the FIRST! Upload now and be on this page with the stars.{% endif %}</p>
+{% for s in songs %}
+<div style="background:#111;border:1px solid gold;border-radius:12px;padding:15px;margin:12px">
+<h3>{{ s.title }} - {{ s.artist }} {% if s.is_vip %}✅ VIP{% endif %}</h3>
+<p>{{ s.genre }} | {{ s.county }}</p>
+<audio controls src="/uploads/{{ s.filename }}" style="width:100%"></audio>
+</div>
+{% endfor %}
+<div style="text-align:center;padding:20px;background:#111"><a href="/vip" style="background:gold;color:#000;padding:12px 25px;display:inline-block;border-radius:20px;text-decoration:none;font-weight:bold">Go VIP - 100 KSh via M-Pesa</a></div>
+</body>
