@@ -3,6 +3,9 @@ import sqlite3, os
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
+app.config['UPLOAD_FOLDER']='uploads'
+app.config['MAX_CONTENT_LENGTH']=50*1024*1024
+os.makedirs('uploads', exist_ok=True)
 app.secret_key = "wuli-v-jarkata-2026"
 UPLOAD = "static/uploads"
 os.makedirs(UPLOAD, exist_ok=True)
@@ -175,6 +178,26 @@ def rewards():
 @app.route("/vip")
 def vip():
     return header() + "<h2 style='color:gold;text-align:center'>VIP - 100 KSh</h2><div style='background:#111;padding:20px;border-radius:12px;border:2px solid gold;text-align:center'><p>Top of Homepage<br>Verified Badge<br>More Fans Faster</p><p>Pay via M-Pesa Till: <b>YOUR TILL</b></p><p>WhatsApp proof to <b>YOUR NUMBER</b></p></div>"
+
+
+@app.route('/artist/<artist_name>')
+def artist_page(artist_name):
+    name = artist_name.replace('-',' ').replace('_',' ').lower()
+    all_songs = []
+    for var in ['SONGS','songs','MUSIC','music','tracks']:
+        if var in globals():
+            all_songs = globals()[var]
+            break
+    result = []
+    for s in all_songs:
+        if isinstance(s, dict):
+            a = str(s.get('artist','')).lower()
+            if name in a or a in name:
+                result.append(s)
+    return render_template('artist.html', artist=artist_name, songs=result)
+@app.route('/artist')
+def artist_list():
+    return redirect('/')
 
 if __name__=="__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
