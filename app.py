@@ -131,7 +131,7 @@ def signup(role):
 @app.route("/login", methods=["GET","POST"])
 def login():
     if request.method=="POST":
-        c=db(); u=c.execute("SELECT * FROM users WHERE name=? AND password=?",(request.form.get("name"),request.form.get("password"))).fetchone(); c.close()
+        c=db(); u=c.execute("SELECT * FROM users WHERE LOWER(TRIM(name))=LOWER(TRIM(?)) AND password=TRIM(?)",(request.form.get("name",""),request.form.get("password",""))).fetchone(); c.close()
         if u: session["user"]=u["name"]; session["role"]=u["role"]; return redirect("/dashboard")
         return "Wrong login! <a href='/login'>Try again</a>"
     return f'''<body style="background:#000;color:#fff;padding:20px;font-family:sans-serif">{header()}<h2 style="color:gold;text-align:center">Login</h2><form method="post" style="background:#111;padding:20px;border-radius:12px"><input name="name" placeholder="Name" style="width:100%;padding:12px;margin:8px 0"><input name="password" type="password" placeholder="Password" style="width:100%;padding:12px;margin:8px 0"><button style="background:gold;padding:15px;width:100%;border-radius:25px;font-weight:bold">LOGIN</button></form></body>'''
